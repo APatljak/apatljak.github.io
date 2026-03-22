@@ -487,19 +487,19 @@ a {
         pointer-events: auto;
     }
 
-    .placeholder {
-        padding-top: 20px;
-    }
+          .placeholder {
+                 padding-top: 20px;
+             }
 
-    .about-image {
-        margin-bottom: 20px;
-    }
+             .about-image {
+                 margin-bottom: 20px;
+             }
 
-    .about-text {
-        max-width: 100%;
-        padding-right: 0;
-    }
-}
+             .about-text {
+                 max-width: 100%;
+                 padding-right: 0;
+             }
+         }
 
 /* Keep this AFTER the mobile block so it wins in landscape phones */
 @media (orientation: landscape) and (pointer: coarse) {

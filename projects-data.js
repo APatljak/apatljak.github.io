@@ -133,6 +133,7 @@ window.PROJECTS_DATA = {
             './images/photo/0000_personal/personal4_AntonioPatljak.jpg',
             './images/photo/0000_personal/personal5_AntonioPatljak.jpg',
             './images/photo/0000_personal/personal6_AntonioPatljak.jpg',
+            './images/photo/0000_personal/personal7_AntonioPatljak.jpg',
         ],
         details: '',
     },
