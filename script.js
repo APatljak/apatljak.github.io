@@ -17,7 +17,7 @@ function enableVerticalToHorizontal(imagesEl) {
     const isMobile = isMobileView();
     const multiplier = isMobile ? 1.8 : 1.2;
     const wheelMax = isMobile ? 900 : 600;
-    const touchMax = isMobile ? 450 : 300;
+    const touchMax = isMobile ? 150 : 300;
     _scrollingEl = imagesEl;
 
     // Optimized wheel handler
