@@ -39,19 +39,32 @@ function enableVerticalToHorizontal(imagesEl) {
         imagesEl.scrollBy({ left: step, behavior: 'smooth' });
     };
 
-    // Touch handlers: map vertical drag to horizontal scrolling + direct horizontal swipe
+    // Touch handlers: map vertical drag to horizontal scrolling + direct horizontal swipe + inertia
     let lastY = null;
     let lastX = null;
+    let lastTime = null;
+    let velocity = 0;
+    let momentumAnimationId = null;
+
     const touchStart = (e) => {
         if (e.touches?.length) {
             lastY = e.touches[0].clientY;
             lastX = e.touches[0].clientX;
+            lastTime = Date.now();
+            velocity = 0;
+            if (momentumAnimationId) {
+                cancelAnimationFrame(momentumAnimationId);
+                momentumAnimationId = null;
+            }
         }
     };
+
     const touchMove = (e) => {
         if (!e.touches?.length) return;
         const y = e.touches[0].clientY;
         const x = e.touches[0].clientX;
+        const now = Date.now();
+        const timeDelta = Math.max(1, now - lastTime);
 
         // Vertical drag → horizontal scroll (existing behavior)
         const dy = lastY != null ? lastY - y : 0;
@@ -66,16 +79,50 @@ function enableVerticalToHorizontal(imagesEl) {
         const horizontalStep = Math.max(-touchMax * 2, Math.min(touchMax * 2, Math.round(dx * 2)));
         const totalStep = verticalStep + horizontalStep;
 
+        // Calculate velocity for inertia (pixels per millisecond)
+        velocity = totalStep / timeDelta;
+        lastTime = now;
+
         imagesEl.scrollBy({ left: totalStep, behavior: 'auto' });
+    };
+
+    const touchEnd = () => {
+        if (momentumAnimationId) {
+            cancelAnimationFrame(momentumAnimationId);
+        }
+
+        // Apply inertia scrolling
+        if (Math.abs(velocity) > 0.1) {
+            let currentVelocity = velocity;
+            const deceleration = 0.95; // Standard inertia deceleration per frame
+
+            const applyMomentum = () => {
+                if (Math.abs(currentVelocity) < 0.1) {
+                    return;
+                }
+
+                const step = Math.round(currentVelocity * 16); // 16ms per frame
+                imagesEl.scrollBy({ left: step, behavior: 'auto' });
+                currentVelocity *= deceleration;
+                momentumAnimationId = requestAnimationFrame(applyMomentum);
+            };
+
+            momentumAnimationId = requestAnimationFrame(applyMomentum);
+        }
+
+        lastY = null;
+        lastX = null;
+        velocity = 0;
     };
 
     imagesEl.addEventListener('wheel', wheelHandler, { passive: false });
     imagesEl.addEventListener('touchstart', touchStart, { passive: true });
     imagesEl.addEventListener('touchmove', touchMove, { passive: false });
+    imagesEl.addEventListener('touchend', touchEnd, { passive: true });
 
     _verticalToHorizontalHandler = wheelHandler;
     _touchStartHandler = touchStart;
-    _touchMoveHandler = touchMove;
+    _touchMoveHandler = touchEnd;
 }
 
 // Right arrow: on click/tap jump to next image
