@@ -12,7 +12,7 @@ window.PROJECTS_DATA = {
             './images/arch/2025_osakaexpo/expo8_AntonioPatljak.jpg',
             './images/arch/2025_osakaexpo/expo10_AntonioPatljak.jpg',
         ],
-        details: 'coauthors: Lana Grahek, Maroje Mrduljaš, Korina Vuković, Pero Vuković \\narchitecture office: <a href="https://arhiv.eu/">ARHIV architecture & urbanism</a> \\nyear: 2025, \\nlocation: yumeshima, osaka, japan',
+        details: 'coauthors: Lana Grahek, Maroje Mrduljaš, Korina Vuković, Pero Vuković \\narchitecture office: <a href="https://arhiv.eu/">ARHIV architecture & urbanism</a> \\nyear: 2025 \\nlocation: yumeshima, osaka, japan',
         text: 'The Croatian Pavilion at EXPO Osaka introduces the concept of Climatic Diversity as a key phenomenon that long-term shapes ecosystems, cultures, and identities. By reconstructing temperatures in real time from 45 meteorological stations across Croatia, the pavilion creates an immersive and constantly changing sensory experience, supported by thermal imaging and didactic messages. The pavilion’s architecture explores the relationships between space, the body, and the environment, connecting a local climatic phenomenon with the global situation and its future.'
     },
     'arch-2': {
@@ -132,5 +132,30 @@ window.PROJECTS_DATA = {
             './images/photo/0000_personal/personal6_AntonioPatljak.jpg',
         ],
         details: '',
+    },
+    'gdesign-1': {
+        title: 'Bilo bi šteta da biljke krepaju - Theatre poster (2025)',
+        images: [
+            './images/gdesign/2025_biljke/Biljke1_AntonioPatljak.jpg',
+        ],
+        details: 'year: 2025\\nproduction company: adu\\ndirector: mirel huskić',
+        text: ''
+    },
+    'gdesign-2': {
+        title: 'Kako je umro prastric August - Theatre poster (2023)',
+        images: [
+            './images/gdesign/2023_prastricaugust/KakoJeUmroPrastricAugust1_AntonioPatljak.jpg',
+        ],
+        details: 'year: 2023\\nproduction company: adu\\ndirector: krešimir dolenčić',
+        text: ''
+    },
+    'gdesign-3': {
+        title: 'Savages - Film Poster (2022)',
+        images: [
+            './images/gdesign/2022_savages/savages1_AntonioPatljak.jpg',
+
+        ],
+        details: 'year: 2022\\nproduction company: alka film\\ndirector: dario lonjak',
+        text: ''
     }
 };

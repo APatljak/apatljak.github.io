@@ -269,8 +269,14 @@ document.querySelectorAll('.about-item').forEach(item => {
         const display = document.querySelector('.project-display');
         const textHTML = String(aboutData.text || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
         display.innerHTML = `
-            <div class="about-image"><img src="${aboutData.image}" alt="about"></div>
-            <div class="about-text">${textHTML}</div>
+            <div class="project-images">
+                <div class="project-description">
+                    <div class="about-text">${textHTML}</div>
+                </div>
+                <div class="project-image about-image-container">
+                    <img src="${aboutData.image}" alt="about">
+                </div>
+            </div>
         `;
         disableVerticalToHorizontal();
         // On phone, show about in content view (same flow as project pages)
@@ -396,6 +402,55 @@ document.querySelectorAll('.project-item').forEach(item => {
         }
         syncHash(projectId);
     });
+});
+
+// Project preview on hover
+const previewEl = document.createElement('div');
+previewEl.className = 'project-item-preview';
+document.body.appendChild(previewEl);
+
+let currentHoverItem = null;
+
+document.querySelectorAll('.project-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        const projectId = this.getAttribute('data-project');
+        const project = projects[projectId];
+        if (!project || !project.images || project.images.length === 0) return;
+        
+        const firstImage = project.images[0];
+        previewEl.innerHTML = `<img src="${firstImage}" alt="${escapeHtml(project.title)}">`;
+        previewEl.classList.add('show');
+        currentHoverItem = this;
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        previewEl.classList.remove('show');
+        currentHoverItem = null;
+    });
+});
+
+// Track mouse movement to position preview
+document.addEventListener('mousemove', (e) => {
+    if (!currentHoverItem || !previewEl.classList.contains('show')) return;
+    
+    const offsetX = 15;
+    const offsetY = 15;
+    let x = e.clientX + offsetX;
+    let y = e.clientY + offsetY;
+    
+    // Keep preview within viewport
+    const previewWidth = previewEl.offsetWidth;
+    const previewHeight = previewEl.offsetHeight;
+    
+    if (x + previewWidth > window.innerWidth) {
+        x = e.clientX - previewWidth - offsetX;
+    }
+    if (y + previewHeight > window.innerHeight) {
+        y = e.clientY - previewHeight - offsetY;
+    }
+    
+    previewEl.style.left = x + 'px';
+    previewEl.style.top = y + 'px';
 });
 
 function applyRouteFromHash() {
