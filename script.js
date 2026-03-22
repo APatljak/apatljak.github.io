@@ -119,6 +119,7 @@ function enableVerticalToHorizontal(imagesEl) {
     imagesEl.addEventListener('touchstart', touchStart, { passive: true });
     imagesEl.addEventListener('touchmove', touchMove, { passive: false });
     imagesEl.addEventListener('touchend', touchEnd, { passive: true });
+    imagesEl.style.userSelect = 'none';
 
     _verticalToHorizontalHandler = wheelHandler;
     _touchStartHandler = touchStart;
@@ -199,6 +200,7 @@ function disableVerticalToHorizontal() {
         }
         if (_touchMoveHandler) {
             _scrollingEl.removeEventListener('touchmove', _touchMoveHandler);
+            _scrollingEl.removeEventListener('touchend', _touchMoveHandler);
         }
     }
     if (_scrollUpdateHandler) {
@@ -208,7 +210,7 @@ function disableVerticalToHorizontal() {
     if (_indicatorCleanup) {
         _indicatorCleanup();
     }
-    
+
     _verticalToHorizontalHandler = null;
     _touchStartHandler = null;
     _touchMoveHandler = null;
