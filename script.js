@@ -13,26 +13,29 @@ let _resizeUpdateHandler = null;
 function enableVerticalToHorizontal(imagesEl) {
     disableVerticalToHorizontal();
     if (!imagesEl) return;
-    
-    const multiplier = 1.2;
+
+    const isMobile = isMobileView();
+    const multiplier = isMobile ? 1.8 : 1.2;
+    const wheelMax = isMobile ? 900 : 600;
+    const touchMax = isMobile ? 450 : 300;
     _scrollingEl = imagesEl;
 
     // Optimized wheel handler
     const wheelHandler = (e) => {
         if (Math.abs(e.deltaY) === 0) return;
-        
+
         // Check if event originated inside imagesEl
         const inTarget = typeof e.composedPath === 'function' 
             ? e.composedPath().includes(imagesEl)
             : imagesEl.contains(e.target);
         if (!inTarget) return;
-        
+
         e.preventDefault();
         let delta = e.deltaY;
         if (e.deltaMode === 1) delta *= 16;
         else if (e.deltaMode === 2) delta *= window.innerHeight;
-        
-        const step = Math.max(-600, Math.min(600, Math.round(delta * multiplier)));
+
+        const step = Math.max(-wheelMax, Math.min(wheelMax, Math.round(delta * multiplier)));
         imagesEl.scrollBy({ left: step, behavior: 'smooth' });
     };
 
@@ -46,7 +49,7 @@ function enableVerticalToHorizontal(imagesEl) {
         const y = e.touches[0].clientY;
         const dy = lastY != null ? lastY - y : 0;
         lastY = y;
-        const step = Math.max(-300, Math.min(300, Math.round(-dy * multiplier)));
+        const step = Math.max(-touchMax, Math.min(touchMax, Math.round(-dy * multiplier)));
         imagesEl.scrollBy({ left: step, behavior: 'auto' });
     };
 
@@ -248,6 +251,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Home handler: reset view and disable mapping
 document.getElementById('home-link').addEventListener('click', function() {
+    // Update meta tags back to default/home
+    if (typeof updateMetaTags === 'function') {
+        updateMetaTags(
+            window.META_CONFIG.pages.default.title,
+            window.META_CONFIG.pages.default.description,
+            window.META_CONFIG.pages.default.image
+        );
+    }
+
     document.querySelectorAll('.project-item, .about-item').forEach(item => item.classList.remove('active'));
     const display = document.querySelector('.project-display');
     if (display) display.innerHTML = `<p class="placeholder">select a project to view details</p>`;
@@ -266,6 +278,16 @@ document.querySelectorAll('.about-item').forEach(item => {
         document.querySelectorAll('.project-item').forEach(proj => proj.classList.remove('active'));
         document.querySelectorAll('.about-item').forEach(about => about.classList.remove('active'));
         this.classList.add('active');
+
+        // Update meta tags for about page
+        if (typeof updateMetaTags === 'function') {
+            updateMetaTags(
+                window.META_CONFIG.pages.about.title,
+                window.META_CONFIG.pages.about.description,
+                window.META_CONFIG.pages.about.image
+            );
+        }
+
         const display = document.querySelector('.project-display');
         const textHTML = String(aboutData.text || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
         display.innerHTML = `
@@ -325,6 +347,17 @@ document.querySelectorAll('.project-item').forEach(item => {
         const projectId = this.getAttribute('data-project');
         const project = projects[projectId];
         if (!project) return;
+
+        // Update meta tags for project
+        const description = project.text || project.details.split('\\n')[0] || window.META_CONFIG.site.description;
+        const image = project.images && project.images.length > 0 ? project.images[0] : window.META_CONFIG.site.image;
+        if (typeof updateMetaTags === 'function') {
+            updateMetaTags(
+                `${escapeHtml(project.title)} | Antonio Patljak`,
+                description.substring(0, 160),
+                image
+            );
+        }
 
         const display = document.querySelector('.project-display');
         if (!display) return;
