@@ -39,18 +39,34 @@ function enableVerticalToHorizontal(imagesEl) {
         imagesEl.scrollBy({ left: step, behavior: 'smooth' });
     };
 
-    // Touch handlers: map vertical drag to horizontal scrolling
+    // Touch handlers: map vertical drag to horizontal scrolling + direct horizontal swipe
     let lastY = null;
+    let lastX = null;
     const touchStart = (e) => {
-        if (e.touches?.length) lastY = e.touches[0].clientY;
+        if (e.touches?.length) {
+            lastY = e.touches[0].clientY;
+            lastX = e.touches[0].clientX;
+        }
     };
     const touchMove = (e) => {
         if (!e.touches?.length) return;
         const y = e.touches[0].clientY;
+        const x = e.touches[0].clientX;
+
+        // Vertical drag → horizontal scroll (existing behavior)
         const dy = lastY != null ? lastY - y : 0;
         lastY = y;
-        const step = Math.max(-touchMax, Math.min(touchMax, Math.round(-dy * multiplier)));
-        imagesEl.scrollBy({ left: step, behavior: 'auto' });
+
+        // Direct horizontal swipe (new, faster)
+        const dx = lastX != null ? lastX - x : 0;
+        lastX = x;
+
+        // Combine both: horizontal swipe is 2x faster than vertical mapping
+        const verticalStep = Math.max(-touchMax, Math.min(touchMax, Math.round(-dy * multiplier)));
+        const horizontalStep = Math.max(-touchMax * 2, Math.min(touchMax * 2, Math.round(dx * 2)));
+        const totalStep = verticalStep + horizontalStep;
+
+        imagesEl.scrollBy({ left: totalStep, behavior: 'auto' });
     };
 
     imagesEl.addEventListener('wheel', wheelHandler, { passive: false });
