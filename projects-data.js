@@ -155,8 +155,7 @@ window.PROJECTS_DATA = {
     'gdesign-3': {
         title: 'Savages - Film Poster (2022)',
         images: [
-            './images/gdesign/2022_savages/savages1_AntonioPatljak.jpg',
-
+            './images/gdesign/2022_savages/Savages1_AntonioPatljak.jpg',
         ],
         details: 'year: 2022\\nproduction company: alka film\\ndirector: dario lonjak',
         text: ''
