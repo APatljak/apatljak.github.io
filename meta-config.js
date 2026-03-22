@@ -20,7 +20,7 @@ window.META_CONFIG = {
         },
         about: {
             title: 'Antonio Patljak',
-            description: 'Learn more about Antonio Patljak, an architect and creative professional based in Zagreb, Croatia.',
+            description: 'Antonio Patljak, an architect and creative professional based in Zagreb, Croatia.',
             image: './images/arch/2025_osakaexpo/expo1_AntonioPatljak.jpg'
         }
     }
