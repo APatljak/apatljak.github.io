@@ -124,12 +124,12 @@ window.PROJECTS_DATA = {
     'photo-4': {
         title: 'personal',
         images: [
-            './images/photo/_personal/personal1_AntonioPatljak.jpg',
-            './images/photo/_personal/personal2_AntonioPatljak.jpg',
-            './images/photo/_personal/personal3_AntonioPatljak.jpg',
-            './images/photo/_personal/personal4_AntonioPatljak.jpg',
-            './images/photo/_personal/personal5_AntonioPatljak.jpg',
-            './images/photo/_personal/personal6_AntonioPatljak.jpg',
+            './images/photo/0000_personal/personal1_AntonioPatljak.jpg',
+            './images/photo/0000_personal/personal2_AntonioPatljak.jpg',
+            './images/photo/0000_personal/personal3_AntonioPatljak.jpg',
+            './images/photo/0000_personal/personal4_AntonioPatljak.jpg',
+            './images/photo/0000_personal/personal5_AntonioPatljak.jpg',
+            './images/photo/0000_personal/personal6_AntonioPatljak.jpg',
         ],
         details: '',
     }
