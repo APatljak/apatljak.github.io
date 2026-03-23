@@ -94,7 +94,7 @@ window.PROJECTS_DATA = {
             './images/prod/2023_blueroom/blueroom3_AntonioPatljak.jpg',
         ],
         details: 'year: 2023\\nrole: production designer\\nproduction company: adu\\ndirector: mirel huskić\\nplaywright: david hare',
-        text: 'A bed under a circle of light, 550cm across. Around it, a ring of booths - black curtains hanging left and right of each, one person inside, dark. No one sees the others watching. The actors never leave the bed. Between scenes nothing resets, only the light shifts. The bed accumulates - a coat left, a glass, a different arrangement of sheets. By the end it has been everything.'
+        text: 'A bed under a circle of light, 550cm across. Around it, a ring of booths with black curtains hanging left and right of each, one person inside, dark. No one sees the others watching. The actors never leave the bed. Between scenes nothing resets, only the light shifts. The bed accumulates a coat left, a glass, a different arrangement of sheets. By the end it has been everything.'
     },
     'photo-1': {
         title: 'House J, Brela / ARHIV (2025)',
