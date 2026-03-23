@@ -50,7 +50,7 @@ window.PROJECTS_DATA = {
         text: 'Through Article 4(4) of the Aliens Act, the European Union grants neighboring countries a significant amount of negotiating power. This is evidenced by recent border crises involving Belarus and Turkey, as well as other countries whose political value is largely measured through their role in preserving the “external border.”\\n\\nThe border as a formative force of architecture. It considers the idea of a political map that operates through all layers of the land, both invented and physical.\\n\\nEvery orientation, like every tradition, is arbitrary: above and below, north and south. All of our horizons and borders are, in this sense, false. To paraphrase Sun Ra, the sky is not only high, it is also low. It is a bottomless pit.\\n\\nThe sky as Orpheus descends into the depths of abandoned tunnels. These artificial spaces reclaim the form of a natural landscape, tunnelforming. Floodlights, prisms, and lenses, once tools of surveillance, are transformed into instruments that generate life. A sign of paranoia becomes a sign of political and architectural healing.\\nSuch a space, until recently without perspective, becomes an interface between immigrant and resident, nature and technology, past and future.\\n\\n Project developed at the Faculty of Architecture, University of Zagreb, under the mentorship of Idis Turato, within the thematic framework of Critical Zone KM³'
     },
     'prod-1': {
-        title: 'rogue heroes s02 (2025)',
+        title: 'rogue heroes s02 (2025) - series',
         images: [
             './images/prod/2025_sas/sas1_AntonioPatljak.jpg',
             './images/prod/2025_sas/sas2_AntonioPatljak.jpg',
@@ -60,7 +60,7 @@ window.PROJECTS_DATA = {
         text: 'Set in Spring 1943, SAS Rogue Heroes Season 2 follows Paddy Mayne taking control of the SAS after David Stirling’s capture. As the war shifts to mainland Europe, the unit fights to prove its worth against skeptical GHQ officials, forming the Special Raiding Service (SRS) to tackle the invasion of Sicily and Italy.'
     },
     'prod-2': {
-        title: 'canary black (2024)',
+        title: 'canary black (2024) - film',
         images: [
             './images/prod/2024_canary/0001_EXTTokyoRooftop_ConceptArt_AP.jpg',
             './images/prod/2024_canary/0001_EXTTokyoRooftop_Model_AP.jpg',
@@ -68,12 +68,13 @@ window.PROJECTS_DATA = {
             './images/prod/2024_canary/canary1_AntonioPatljak.jpg',
             './images/prod/2024_canary/canary2_AntonioPatljak.jpg',
             './images/prod/2024_canary/canary3_AntonioPatljak.jpg',
+            './images/prod/2024_canary/canary4_AntonioPatljak.jpg',
         ],
         details: 'year: 2024\\nrole: set designer\\ndirector: pierre morel\\nproduction designer: sebastian t. krawinkel\\nsupervising art director: danijel završki\\nart directors: patrick herzberg, klara nikšić ',
         text: 'It follows Avery Graves as she is blackmailed by terrorists into betraying her own country to save her kidnapped husband.'
     },
     'prod-3': {
-        title: 'savages (2022)',
+        title: 'savages (2022) - film',
         images: [
             './images/prod/2022_divljaci/savages1_AntonioPatljak.jpg',
             './images/prod/2022_divljaci/savages2_AntonioPatljak.jpg',
@@ -84,6 +85,16 @@ window.PROJECTS_DATA = {
         ],
         details: 'year: 2022\\nrole: production designer\\nproduction company: alka film\\ndirector: dario lonjak',
         text: 'A script defined by borders, crossings, and intersecting character paths served as the foundation for the production design. Drawing inspiration from the late period of American Westerns, most notably John Ford’s The Searchers, the film’s visual world is situated along the border between Bosnia and Herzegovina and Croatia. The script’s recurring motif of lines and boundaries became reference points for the characters’ journeys through both the narrative and the film’s barren landscape. The set design does not function merely as a formal backdrop; it actively shapes the characters’ arcs, turning physical crossings into moments of transformation. Although framed as a genre action film, the story delves into the inner worlds of football-obsessed outsiders. Every surface and material within this environment is worn, weathered, and abused, layered with a heavy patina that reflects the characters’ psychological and emotional states. While the script specifies a precise time and place, the production design deliberately embraces ambiguity. The setting could just as easily evoke the American West as contemporary Europe. By the film’s end, the characters are profoundly changed, yet they remain in the same physical location, uncertain of what the future holds.'
+    },
+    'prod-4': {
+        title: 'the blue room (2023) - play',
+        images: [
+            './images/prod/2023_blueroom/blueroom1_AntonioPatljak.jpg',
+            './images/prod/2023_blueroom/blueroom2_AntonioPatljak.jpg',
+            './images/prod/2023_blueroom/blueroom3_AntonioPatljak.jpg',
+        ],
+        details: 'year: 2023\\nrole: production designer\\nproduction company: adu\\ndirector: mirel huskić\\nplaywright: david hare',
+        text: 'A bed under a circle of light, 550cm across. Around it, a ring of booths - black curtains hanging left and right of each, one person inside, dark. No one sees the others watching. The actors never leave the bed. Between scenes nothing resets, only the light shifts. The bed accumulates - a coat left, a glass, a different arrangement of sheets. By the end it has been everything.'
     },
     'photo-1': {
         title: 'House J, Brela / ARHIV (2025)',
