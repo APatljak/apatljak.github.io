@@ -69,6 +69,8 @@ window.PROJECTS_DATA = {
             './images/prod/2024_canary/canary2_AntonioPatljak.jpg',
             './images/prod/2024_canary/canary3_AntonioPatljak.jpg',
             './images/prod/2024_canary/canary4_AntonioPatljak.jpg',
+            './images/prod/2024_canary/canary5_AntonioPatljak.jpg',
+            './images/prod/2024_canary/canary6_AntonioPatljak.jpg',
         ],
         details: 'year: 2024\\nrole: set designer\\ndirector: pierre morel\\nproduction designer: sebastian t. krawinkel\\nsupervising art director: danijel završki\\nart directors: patrick herzberg, klara nikšić ',
         text: 'It follows Avery Graves as she is blackmailed by terrorists into betraying her own country to save her kidnapped husband.'
