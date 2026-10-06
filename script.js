@@ -9,6 +9,68 @@ let _scrollingEl = null;
 let _indicatorCleanup = null;
 let _scrollUpdateHandler = null;
 let _resizeUpdateHandler = null;
+let _homeSlideshowTimer = null;
+
+const HOME_SLIDESHOW_INTERVAL_MS = 1000;
+
+function getAllProjectImageUrls() {
+    const urls = [];
+    Object.keys(projects).forEach((id) => {
+        const project = projects[id];
+        if (!project?.images?.length) return;
+        project.images.forEach((img) => {
+            if (typeof img === 'string' && img) urls.push(img);
+        });
+    });
+    return urls;
+}
+
+function pickRandomProjectImage(pool, excludeUrl) {
+    if (!pool.length) return null;
+    if (pool.length === 1) return pool[0];
+    let next = pool[Math.floor(Math.random() * pool.length)];
+    let attempts = 0;
+    while (next === excludeUrl && attempts < 12) {
+        next = pool[Math.floor(Math.random() * pool.length)];
+        attempts += 1;
+    }
+    return next;
+}
+
+function stopHomeSlideshow() {
+    if (_homeSlideshowTimer) {
+        clearInterval(_homeSlideshowTimer);
+        _homeSlideshowTimer = null;
+    }
+}
+
+function showHomeLanding() {
+    stopHomeSlideshow();
+    const display = document.querySelector('.project-display');
+    if (!display) return;
+
+    display.classList.add('home-view', 'no-indicator');
+    display.innerHTML = `
+        <div class="home-slideshow" aria-live="polite">
+            <img class="home-slideshow-img" alt="" decoding="async">
+        </div>
+    `;
+
+    const pool = getAllProjectImageUrls();
+    const imgEl = display.querySelector('.home-slideshow-img');
+    if (!pool.length || !imgEl) return;
+
+    let currentUrl = '';
+    const showNext = () => {
+        const url = pickRandomProjectImage(pool, currentUrl);
+        if (!url) return;
+        currentUrl = url;
+        imgEl.src = url;
+    };
+
+    showNext();
+    _homeSlideshowTimer = setInterval(showNext, HOME_SLIDESHOW_INTERVAL_MS);
+}
 
 function enableVerticalToHorizontal(imagesEl) {
     disableVerticalToHorizontal();
@@ -282,8 +344,7 @@ function showSidebarOnMobile(options = {}) {
     removeMobileTopBar();
     disableVerticalToHorizontal();
     if (resetDisplay) {
-        const display = document.querySelector('.project-display');
-        if (display) display.innerHTML = `<p class="placeholder">select a project to view details</p>`;
+        showHomeLanding();
     }
 }
 
@@ -326,8 +387,7 @@ document.getElementById('home-link').addEventListener('click', function() {
     }
 
     document.querySelectorAll('.project-item, .about-item').forEach(item => item.classList.remove('active'));
-    const display = document.querySelector('.project-display');
-    if (display) display.innerHTML = `<p class="placeholder">select a project to view details</p>`;
+    showHomeLanding();
     disableVerticalToHorizontal();
     if (isMobileView()) showSidebarOnMobile();
     syncHash('home');
@@ -353,7 +413,9 @@ document.querySelectorAll('.about-item').forEach(item => {
             );
         }
 
+        stopHomeSlideshow();
         const display = document.querySelector('.project-display');
+        display.classList.remove('home-view');
         const textHTML = String(aboutData.text || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
         display.innerHTML = `
             <div class="project-images about-layout">
@@ -424,8 +486,10 @@ document.querySelectorAll('.project-item').forEach(item => {
             );
         }
 
+        stopHomeSlideshow();
         const display = document.querySelector('.project-display');
         if (!display) return;
+        display.classList.remove('home-view');
 
         const imageHTML = project.images.map(img => {
             return typeof img === 'string'

@@ -289,6 +289,31 @@ a {
     margin-bottom: 20px;
 }
 
+/* Home landing: random project images at half the project-view size */
+.project-display.home-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-slideshow {
+    width: 100%;
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.home-slideshow-img {
+    height: calc((100vh - 80px) * 0.5);
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
 .contact-info {
     color: #999;
     font-size: 12.6px;
