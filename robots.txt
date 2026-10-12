@@ -1,0 +1,56 @@
+# Block AI training and AI assistant crawlers
+
+# OpenAI
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Anthropic
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+Disallow: /
+
+# Google (AI training control token; does not affect Google Search)
+User-agent: Google-Extended
+Disallow: /
+
+# Apple (AI training control token; does not affect Siri/Spotlight search)
+User-agent: Applebot-Extended
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Disallow: /
+
+# Meta
+User-agent: meta-externalagent
+User-agent: FacebookBot
+Disallow: /
+
+# Amazon
+User-agent: Amazonbot
+Disallow: /
+
+# Others
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: cohere-ai
+User-agent: Diffbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: Ai2Bot
+User-agent: ImagesiftBot
+User-agent: Omgilibot
+User-agent: Timpibot
+User-agent: YouBot
+User-agent: PetalBot
+User-agent: img2dataset
+Disallow: /
+
+# Everyone else (regular search engines) may crawl
+User-agent: *
+Allow: /
