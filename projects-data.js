@@ -137,6 +137,18 @@ window.PROJECTS_DATA = {
         ],
         details: 'year: 2025\\ncommissioner: <a href="https://arhiv.eu/">ARHIV architecture & urbanism</a>\\nlocation: zagreb',
     },
+    'photo-5': {
+        title: 'apartment c, zagreb / 2A zidarić (2026)',
+        images: [
+            './images/photo/2026_2A_apartmentC/apartmentC1_AntonioPatljak.jpg',
+            './images/photo/2026_2A_apartmentC//apartmentC2_AntonioPatljak.jpg',
+            './images/photo/2026_2A_apartmentc/apartmentC3_AntonioPatljak.jpg',
+            './images/photo/2026_2A_apartmentc/apartmentC4_AntonioPatljak.jpg',
+            './images/photo/2026_2A_apartmentc/apartmentC5_AntonioPatljak.jpg',
+            './images/photo/2026_2A_apartmentc/apartmentC6_AntonioPatljak.jpg',
+        ],
+        details: 'year: 2026\\ncommissioner: <a href="https://2a-zidaric.hr//">2A Zidarić</a>\\nlocation: zagreb',
+    },
     'photo-4': {
         title: 'personal',
         images: [
@@ -149,6 +161,7 @@ window.PROJECTS_DATA = {
             './images/photo/0000_personal/personal7_AntonioPatljak.jpg',
         ],
         details: '',
+   
     },
     'gdesign-1': {
         title: 'Bilo bi šteta da biljke krepaju - Theatre poster (2025)',
